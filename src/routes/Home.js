@@ -1,7 +1,6 @@
 import Movie from "../components/Movie";
 import React, { useState, useEffect } from "react";
-import styles from "../Home.module.css";
-
+import { SimpleGrid } from "@chakra-ui/react";
 function Home() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
@@ -20,20 +19,20 @@ function Home() {
   return (
     <div>
       {loading ? (
-        <h1 className={styles.qwe}> loading...</h1>
+        <h1> loading...</h1>
       ) : (
-        <div className={styles.qwerty}>
+        <SimpleGrid minChildWidth="200px" spacing={10} padding={"40px"}>
           {movies.map((movie) => (
             <Movie
               key={movie.id}
               id={movie.id}
               coverImg={movie.medium_cover_image}
               title={movie.title}
-              summary={movie.summary}
+              // summary={movie.summary}
               genres={movie.genres}
             />
           ))}
-        </div>
+        </SimpleGrid>
       )}
     </div>
   );

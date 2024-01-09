@@ -1,15 +1,18 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import Detail from "./routes/Detail";
+import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/movie/:id" element={<Detail />} />
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </Router>
+    <ChakraProvider>
+      <Router>
+        <Routes>
+          <Route path="/movie/:id" element={<Detail />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Router>
+    </ChakraProvider>
   );
 }
 
