@@ -1,5 +1,6 @@
 import Movie from "../components/Movie";
 import React, { useState, useEffect } from "react";
+import styles from "../Home.module.css";
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -19,9 +20,9 @@ function Home() {
   return (
     <div>
       {loading ? (
-        <h1>loading...</h1>
+        <h1 className={styles.qwe}> loading...</h1>
       ) : (
-        <div>
+        <div className={styles.qwerty}>
           {movies.map((movie) => (
             <Movie
               key={movie.id}
