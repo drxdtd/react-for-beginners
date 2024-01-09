@@ -1,9 +1,18 @@
 import Movie from "../components/Movie";
 import React, { useState, useEffect } from "react";
-import { SimpleGrid } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  SimpleGrid,
+  Spinner,
+  useColorMode,
+} from "@chakra-ui/react";
 function Home() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
+  const { colorMode, toggleColorMode } = useColorMode();
+
   const getMovies = async () => {
     const json = await (
       await fetch(
@@ -16,25 +25,38 @@ function Home() {
   useEffect(() => {
     getMovies();
   }, []);
+
   return (
-    <div>
+    <Box>
       {loading ? (
-        <h1> loading...</h1>
+        <Center h={"100vh"}>
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="green.200"
+            size="xl"
+          />
+        </Center>
       ) : (
-        <SimpleGrid minChildWidth="200px" spacing={10} padding={"40px"}>
-          {movies.map((movie) => (
-            <Movie
-              key={movie.id}
-              id={movie.id}
-              coverImg={movie.medium_cover_image}
-              title={movie.title}
-              // summary={movie.summary}
-              genres={movie.genres}
-            />
-          ))}
-        </SimpleGrid>
+        <Box>
+          <Button onClick={toggleColorMode}>
+            Toggle {colorMode === "light" ? "Dark" : "Light"}
+          </Button>
+          <SimpleGrid minChildWidth="200px" spacing={10} padding={"40px"}>
+            {movies.map((movie) => (
+              <Movie
+                key={movie.id}
+                id={movie.id}
+                coverImg={movie.medium_cover_image}
+                title={movie.title}
+                genres={movie.genres}
+              />
+            ))}
+          </SimpleGrid>
+        </Box>
       )}
-    </div>
+    </Box>
   );
 }
 

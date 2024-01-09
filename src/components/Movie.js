@@ -5,7 +5,6 @@ import {
   Stack,
   Text,
   Badge,
-  SimpleGrid,
   WrapItem,
   Wrap,
 } from "@chakra-ui/react";
@@ -14,12 +13,7 @@ import { Link } from "react-router-dom";
 
 function Movie({ coverImg, title, genres, id }) {
   return (
-    <Card
-      borderWidth={"4px"}
-      borderColor={"white"}
-      as={Link}
-      to={`/movie/${id}`}
-    >
+    <Card as={Link} to={`/movie/${id}`} boxShadow="md">
       <Img src={coverImg} alt={title} />
       <Stack p={"12px"}>
         <Heading size="md" colorScheme="telegram">
@@ -28,7 +22,7 @@ function Movie({ coverImg, title, genres, id }) {
         <Text as="samp">Genres:</Text>
         <Wrap>
           {genres.map((genre) => (
-            <WrapItem>
+            <WrapItem key={genre}>
               <Badge colorScheme="green">{genre}</Badge>
             </WrapItem>
           ))}
@@ -41,7 +35,6 @@ Movie.propTypes = {
   id: PropTypes.number.isRequired,
   coverImg: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  summary: PropTypes.string.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
