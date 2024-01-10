@@ -7,7 +7,7 @@ import theme from "./theme";
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/movie/:id" element={<Detail />} />
           <Route path="/" element={<Home />} />
