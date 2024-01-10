@@ -8,6 +8,7 @@ import {
   Spinner,
   useColorMode,
 } from "@chakra-ui/react";
+
 function Home() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
@@ -34,7 +35,7 @@ function Home() {
             thickness="4px"
             speed="0.65s"
             emptyColor="gray.200"
-            color="green.200"
+            color="red.200"
             size="xl"
           />
         </Center>

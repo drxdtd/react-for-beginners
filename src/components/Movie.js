@@ -16,14 +16,12 @@ function Movie({ coverImg, title, genres, id }) {
     <Card as={Link} to={`/movie/${id}`} boxShadow="md">
       <Img src={coverImg} alt={title} />
       <Stack p={"12px"}>
-        <Heading size="md" colorScheme="telegram">
-          {title}
-        </Heading>
+        <Heading size="md">{title}</Heading>
         <Text as="samp">Genres:</Text>
         <Wrap>
           {genres.map((genre) => (
             <WrapItem key={genre}>
-              <Badge colorScheme="green">{genre}</Badge>
+              <Badge colorScheme="red">{genre}</Badge>
             </WrapItem>
           ))}
         </Wrap>
