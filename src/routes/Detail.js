@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   Box,
   Button,
@@ -43,7 +43,6 @@ function Detail() {
     getMovie();
   }, []);
 
-  console.log(movie);
   return load === true ? (
     <Center h={"100vh"}>
       <Spinner
@@ -77,7 +76,15 @@ function Detail() {
                 </WrapItem>
               ))}
             </Wrap>
-            <Button colorScheme="red"> Watch Now</Button>
+            <Button
+              colorScheme="red"
+              as={"a"}
+              href={movie.url}
+
+              // to={movie.torrents[0]}
+            >
+              Watch Now
+            </Button>
             <StatGroup>
               <Stat>
                 <StatLabel>Like</StatLabel>
